@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class startcontrol : MonoBehaviour
 {
     public void startbutton()
     {
-        StartCoroutine("start");
+        SceneManager.LoadScene("main");
     }
 
-    IEnumerator Start()
+    public void exitbutton()
     {
-        
+        Application.Quit();
     }
 }
