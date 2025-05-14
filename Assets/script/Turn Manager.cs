@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    public BattleResult AllResult { get; private set; }
+    public void SetResult(BattleResult result)
+    {
+        AllResult = result;
+        AllTurns = result.turns;
+    }
+
     public static TurnManager Instance { get; private set; }
 
     public List<Turn> AllTurns { get; private set; } = new List<Turn>();
@@ -29,8 +36,9 @@ public class BattleResult
 {
     public string situation;
     public List<Turn> turns;
-    public string result_summary;
+    public string resultSummary;
 }
+
 
 [System.Serializable]
 public class Turn
