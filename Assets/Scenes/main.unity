@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uACF5\uACA9\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
   m_sharedMaterial: {fileID: -1880796268301584142, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 648014965}
   - component: {fileID: 648014964}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uC8FC\uC0AC\uC704 \n\uAD74\uB9AC\uAE30\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
   m_sharedMaterial: {fileID: -1880796268301584142, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
@@ -689,8 +689,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 76
-  m_fontSizeBase: 76
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uBC29\uC5B4\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
   m_sharedMaterial: {fileID: -1880796268301584142, guid: 35fb52cc63d9e82428b794d7bac7bcf1, type: 2}
@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 1360616659}
   - component: {fileID: 1360616661}
   - component: {fileID: 1360616660}
+  - component: {fileID: 1360616662}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1214,7 +1215,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 558, y: 310}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360616660
 MonoBehaviour:
@@ -1236,7 +1237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 453046027, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1254,6 +1255,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360616658}
   m_CullTransparentMesh: 1
+--- !u!95 &1360616662
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360616658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a991898cca7632f47b99b8a78e16f5b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1441262025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1290,7 @@ GameObject:
   - component: {fileID: 1441262028}
   - component: {fileID: 1441262027}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1388,7 +1411,7 @@ GameObject:
   - component: {fileID: 1715341365}
   - component: {fileID: 1715341364}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
