@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345ae49432f64d64baf6aa07478d9dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  situationText: {fileID: 114351824}
+  situationText: {fileID: 1829557241}
   monsterText: {fileID: 114351824}
   masterText: {fileID: 114351824}
   apiUrl: http://192.168.0.75:8000/
