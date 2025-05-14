@@ -220,25 +220,7 @@ public class BattleResponse
     public string result; // 이건 실제로 JSON 문자열
 }
 
-[System.Serializable]
-public class BattleResult
-{
-    public string situation;
-    public List<Turn> turns;
-    public string result_summary;
-}
 
-[System.Serializable]
-public class Turn
-{
-    public string player1;
-    public string dice1;
-    public string master1;
-    public string monster;
-    public string player2;
-    public string dice2;
-    public string master2;
-}
 
 public class TextUploader : MonoBehaviour
 {
