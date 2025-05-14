@@ -1753,6 +1753,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441262025}
   m_CullTransparentMesh: 1
+--- !u!1 &1465266874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465266876}
+  - component: {fileID: 1465266875}
+  m_Layer: 0
+  m_Name: DIceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1465266875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465266874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58210cd15114a834f9248d2bbecc1553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1DiceUI: {fileID: 1054666113}
+  player2DiceUI: {fileID: 1054666113}
+  diceImage: {fileID: 0}
+  diceSprites:
+  - {fileID: 129919980, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+  - {fileID: 453046027, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+  - {fileID: -1329462127, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+  - {fileID: 1998893486, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+  - {fileID: 2134905213, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+  - {fileID: -610827567, guid: c3668285400723e4ab4c3bc2a4e75802, type: 3}
+--- !u!4 &1465266876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465266874}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 839.22345, y: 430.67935, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715341362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,13 +1890,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97265809}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1465266875}
+        m_TargetAssemblyTypeName: DiceManager, Assembly-CSharp
+        m_MethodName: ShowDiceForCurrentTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1940,3 +1994,4 @@ SceneRoots:
   - {fileID: 820580685}
   - {fileID: 97265810}
   - {fileID: 1950919539}
+  - {fileID: 1465266876}
