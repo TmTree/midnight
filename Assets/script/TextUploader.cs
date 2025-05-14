@@ -71,6 +71,137 @@
 //         public string content;
 //     }
 // }
+// using UnityEngine;
+// using UnityEngine.Networking;
+// using TMPro;
+// using System.Collections;
+// using System.Collections.Generic;
+// using System.Linq;
+//
+// [System.Serializable]
+// public class BattleResponse
+// {
+//     public string situation;
+//     public string player1;
+//     public string player2;
+//     public string monster;
+//     public string master;
+//     public string result;
+// }
+//
+// [System.Serializable]
+// public class BattleResult
+// {
+//     public string situation;
+//     public List<Turn> turns;
+//     public string result_summary;
+// }
+//
+// [System.Serializable]
+// public class Turn
+// {
+//     public string player1;
+//     public string dice1;
+//     public string master1;
+//     public string monster;
+//     public string player2;
+//     public string dice2;
+//     public string master2;
+// }
+//
+//
+// public class TextUploader : MonoBehaviour
+// {
+//     [Header("UI References")]
+//     public TMP_Text situationText;   // 상황 텍스트 (처음 씬에서 출력)
+//     public TMP_Text monsterText;     // 몬스터 설명 텍스트
+//     public TMP_Text masterText;      // 마스터 설명 텍스트
+//
+//     [Header("Server")]
+//     public string apiUrl = "http://192.168.0.75:8000/";
+//
+//     [Header("Parsed Result")]
+//     public List<string> turnLines = new List<string>();     // 전투 대사 줄별 저장
+//     public static string fullTurns;                         // 다음 씬에 넘길 전투 텍스트
+//     public static string resultSummary;                     // 결과 요약 (엔딩용)
+//
+//     public void UploadText(string userText)
+//     {
+//         string jsonBody = JsonUtility.ToJson(new TextData { content = userText });
+//         StartCoroutine(SendPostRequest(jsonBody));
+//     }
+//
+//     IEnumerator SendPostRequest(string jsonBody)
+//     {
+//         UnityWebRequest request = new UnityWebRequest(apiUrl + "receive-text", "POST");
+//         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
+//         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+//         request.downloadHandler = new DownloadHandlerBuffer();
+//         request.SetRequestHeader("Content-Type", "application/json");
+//
+//         Debug.Log("📤 전송 내용: " + jsonBody);
+//         yield return request.SendWebRequest();
+//
+//         if (request.result != UnityWebRequest.Result.Success)
+//         {
+//             Debug.LogError("❌ 요청 실패: " + request.error);
+//             if (situationText != null)
+//                 situationText.text = "서버 오류: " + request.error;
+//         }
+//         else
+//         {
+//             Debug.Log("✅ 서버 응답 수신");
+//
+//             // JSON 파싱
+//             string jsonResponse = request.downloadHandler.text;
+//             BattleResponse response = JsonUtility.FromJson<BattleResponse>(jsonResponse);
+//
+//             // 상황 텍스트 출력
+//             if (situationText != null)
+//                 situationText.text = response.situation;
+//
+//             if (monsterText != null)
+//                 monsterText.text = response.monster;
+//
+//             if (masterText != null)
+//                 masterText.text = response.master;
+//
+//             // 결과 텍스트 분리
+//             string[] parts = response.result.Split(new string[] { "---" }, System.StringSplitOptions.None);
+//
+//             if (parts.Length >= 1)
+//             {
+//                 string battlePart = parts[0];
+//                 fullTurns = ExtractTurnOnly(battlePart);
+//                 turnLines = fullTurns.Split('\n').ToList();
+//             }
+//
+//             if (parts.Length >= 2)
+//             {
+//                 resultSummary = parts[1].Trim();
+//             }
+//
+//             Debug.Log("▶ 전투 대사:\n" + fullTurns);
+//             Debug.Log("🏁 요약:\n" + resultSummary);
+//         }
+//     }
+//
+//     private string ExtractTurnOnly(string rawText)
+//     {
+//         int index = rawText.IndexOf("#1턴");
+//         if (index >= 0)
+//         {
+//             return rawText.Substring(index).Trim();
+//         }
+//         return rawText.Trim(); // 혹시나 턴 정보가 없을 경우 전체 반환
+//     }
+//
+//     [System.Serializable]
+//     public class TextData
+//     {
+//         public string content;
+//     }
+// }
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
@@ -86,7 +217,7 @@ public class BattleResponse
     public string player2;
     public string monster;
     public string master;
-    public string result;
+    public string result; // 이건 실제로 JSON 문자열
 }
 
 [System.Serializable]
@@ -108,7 +239,6 @@ public class Turn
     public string dice2;
     public string master2;
 }
-
 
 public class TextUploader : MonoBehaviour
 {
