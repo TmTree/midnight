@@ -7,7 +7,7 @@ public class startcontrol : MonoBehaviour
 {
     public void startbutton()
     {
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("main2");
     }
 
     public void exitbutton()

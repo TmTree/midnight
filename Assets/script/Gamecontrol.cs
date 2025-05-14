@@ -17,6 +17,6 @@ public class Gamecontrol : MonoBehaviour
 
     public void EndButton()
     {
-        SceneManager.LoadScene("ending");
+        SceneManager.LoadScene("main");
     }
 }
