@@ -37,12 +37,6 @@ public class TextUploader : MonoBehaviour
 
     private void Awake()
     {
-        // 싱글톤 패턴
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
         Instance = this;
         DontDestroyOnLoad(gameObject); // 씬 전환에도 유지하고 싶다면 추가
     }
@@ -76,6 +70,7 @@ public class TextUploader : MonoBehaviour
 
             // 1차 파싱
             string jsonResponse = request.downloadHandler.text;
+            Debug.Log($"Response {request.downloadHandler.text}");
             BattleResponse response = JsonUtility.FromJson<BattleResponse>(jsonResponse);
 
             // 2차 파싱 (중첩 JSON 문자열)
@@ -97,9 +92,11 @@ public class TextUploader : MonoBehaviour
             fullTurns = string.Join("\n", battleResult.turns.Select((turn, i) =>
                 $"# {i + 1}턴\n" +
                 $"{response.player1}: {turn.player1}\n" +
+                $"dice1: {turn.dice1}\n" +
                 $"{response.master}: {turn.master1}\n" +
                 $"{response.monster}: {turn.monster}\n" +
                 $"{response.player2}: {turn.player2}\n" +
+                $"dice2: {turn.dice2}\n" +
                 $"{response.master}: {turn.master2}\n"
             ));
 
@@ -108,6 +105,27 @@ public class TextUploader : MonoBehaviour
 
             Debug.Log("▶ 전투 대사:\n" + fullTurns);
             Debug.Log("🏁 요약:\n" + textResultSummary);
+            
+// 첫 번째 턴 기준으로 dice1, dice2 추출
+            if (battleResult != null && battleResult.turns != null && battleResult.turns.Count > 0)
+            {
+                var firstTurn = battleResult.turns[0];
+                int.TryParse(firstTurn.dice1, out int dice1);
+                int.TryParse(firstTurn.dice2, out int dice2);
+
+                // 이미지 업데이트 - 시퀀스 기반 (idle → 성공/실패)
+                // BattleImageManger.Instance?.PlayTurnImageSequence(response.player1, response.player2, dice1, dice2);
+                if (BattleImageManger.Instance != null)
+                {
+                    BattleImageManger.Instance.PlayTurnImageSequence(response.player1, response.player2, dice1, dice2);
+                }
+                else
+                {
+                    Debug.Log("에러==============================");
+                }
+            }
+
+
         }
     }
 

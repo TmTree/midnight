@@ -16,12 +16,6 @@ public class TurnManager : MonoBehaviour
 
     private void Awake()
     {
-        // 싱글톤 패턴
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
         Instance = this;
         DontDestroyOnLoad(gameObject); // 씬 전환에도 유지하고 싶다면 추가
     }
